@@ -1,0 +1,47 @@
+---
+type Props = {
+  pages: any[];
+  currentPage: string;
+};
+
+function createPageCursor(url: any) {
+  const index = pages.findIndex((page) => page.url == url);
+
+  const prev = pages[index - 1];
+  const next = pages[index + 1];
+
+  return [prev, next];
+}
+
+const { currentPage, pages } = Astro.props as Props;
+const [prevPage, nextPage] = createPageCursor(currentPage);
+console.log(nextPage);
+---
+
+<section class="flex items-center justify-between">
+  {
+    prevPage ? (
+      <a class="link" href={prevPage.url}>
+        <div>Previous</div>
+        {prevPage.frontmatter.title}
+      </a>
+    ) : (
+      <div />
+    )
+  }
+
+  {
+    nextPage && (
+      <a class="link" href={nextPage.url}>
+        <div>Next</div>
+        {nextPage.frontmatter.title}
+      </a>
+    )
+  }
+</section>
+
+<style>
+  .link {
+    @apply border border-gray-300;
+  }
+</style>

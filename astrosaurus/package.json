@@ -1,0 +1,28 @@
+{
+  "name": "astrosaurus",
+  "type": "module",
+  "version": "0.0.2",
+  "main": "./src/index",
+  "scripts": {
+    "prepare": "tsc ",
+    "prepublish": "tailwindcss build src/styles.css -o public/styles.css"
+  },
+  "devDependencies": {
+    "@astrojs/tailwind": "^1.0.1",
+    "@tailwindcss/typography": "^0.5.7",
+    "astro": "^1.2.3"
+  },
+  "peerDependencies": {
+    "astro": "^1.2.3"
+  },
+  "files": [
+    "./src/theme/*"
+  ],
+  "dependencies": {
+    "hastscript": "^7.0.2",
+    "remark-directive": "^2.0.1",
+    "unified": "^10.1.2",
+    "unist-util-remove": "^3.1.0",
+    "unist-util-visit": "^4.1.1"
+  }
+}

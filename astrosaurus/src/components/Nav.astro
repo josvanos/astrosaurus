@@ -1,0 +1,44 @@
+---
+import { getConfig } from "../helpers";
+import Github from "../icons/Github.astro";
+import Twitter from "../icons/Twitter.astro";
+import DarkModeSwitch from "./Toggles/DarkModeSwitch.astro";
+
+const config = await getConfig();
+
+const icons_of_socials = {
+  github: Github,
+  twitter: Twitter,
+};
+
+const socials = Object.entries<any>(config?.socials || {})
+  .map(([provider, value]) => {
+    // @ts-ignore
+    let Icon = icons_of_socials[provider];
+
+    if (Icon) return { provider, Icon, url: value };
+
+    Icon = typeof value == "object" ? value?.icon : null;
+    if (Icon) return { provider, Icon, url: value?.url };
+
+    return false;
+  })
+  .filter((x) => x);
+---
+
+<nav class="flex justify-between px-8 py-4">
+  <div>
+    <a href="/blog"> Blog</a>
+  </div>
+  <div class="flex items-center space-x-4">
+    {
+      socials.map(({ url, Icon }) => (
+        <a href={url}>
+          <Icon />
+        </a>
+      ))
+    }
+
+    <DarkModeSwitch />
+  </div>
+</nav>

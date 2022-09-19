@@ -1,0 +1,18 @@
+---
+import { getConfig } from "../helpers";
+import BaseHead from "./BaseHead.astro";
+
+const config = await getConfig();
+const Head = config?.theme?.extend?.head;
+---
+
+<html>
+  <head>
+    <BaseHead />
+    {Head && Head}
+    <slot name="head" />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

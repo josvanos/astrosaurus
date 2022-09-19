@@ -1,0 +1,66 @@
+---
+import CautionIcon from "./icons/CautionIcon.astro";
+import DangerIcon from "./icons/DangerIcon.astro";
+import NoteIcon from "./icons/NoteIcon.astro";
+import TipIcon from "./icons/TipIcon.astro";
+
+export interface Props {
+  type?: "note" | "tip" | "caution" | "danger";
+  title?: string;
+}
+
+const { type = "note", title = type } = Astro.props as Props;
+
+const icons = {
+  note: NoteIcon,
+  tip: TipIcon,
+  caution: CautionIcon,
+  danger: DangerIcon,
+};
+
+const Icon = icons[type] || icons.note;
+---
+
+<section class={`${type}  border-l-4  px-4  mb-4 `} aria-label={title}>
+  <div class="header flex items-center py-2 space-x-2" aria-hidden="true">
+    <span class="icon flex items-center justify-center">
+      <Icon />
+    </span>
+    <span class="title uppercase font-bold">
+      {title}
+    </span>
+  </div>
+  <section class="note--body">
+    <slot />
+  </section>
+</section>
+
+<style>
+  :global(.note--body > p) {
+    margin: 0;
+  }
+
+  .note {
+    @apply bg-sky-500 border-sky-600 bg-opacity-60;
+  }
+
+  .tip {
+    @apply bg-emerald-300  border-emerald-700;
+  }
+
+  .tip .header {
+    @apply text-emerald-700;
+  }
+
+  .caution {
+    @apply bg-amber-300 bg-opacity-60 border-amber-400 dark:bg-amber-900/50 dark:text-amber-300;
+  }
+
+  .caution .header {
+    @apply text-amber-700 dark:text-amber-300;
+  }
+
+  .danger {
+    @apply bg-red-500 border-red-600;
+  }
+</style>

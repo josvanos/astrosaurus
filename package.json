@@ -1,0 +1,14 @@
+{
+  "name": "root",
+  "private": true,
+  "workspaces": [
+    "www",
+    "astrosaurus"
+  ],
+  "scripts": {
+    "dev": "cd www &&  yarn dev "
+  },
+  "devDependencies": {
+    "lerna": "^5.5.1"
+  }
+}
