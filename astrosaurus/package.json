@@ -1,11 +1,11 @@
 {
   "name": "astrosaurus",
   "type": "module",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "./src/index",
   "scripts": {
     "prepare": "tsc ",
-    "prepublish": "tailwindcss build src/styles.css -o public/styles.css"
+    "prepublish": "tailwindcss build -i ./src/tailwind.css -o ./src/astrosaurus.css"
   },
   "devDependencies": {
     "@astrojs/tailwind": "^1.0.1",
@@ -16,7 +16,7 @@
     "astro": "^1.2.3"
   },
   "files": [
-    "./src/theme/*"
+    "./src/*"
   ],
   "dependencies": {
     "hastscript": "^7.0.2",
