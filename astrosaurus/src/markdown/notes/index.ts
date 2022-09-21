@@ -84,10 +84,11 @@ export function astrosaurusAdvancedMarkdown({
         });
 
         // Auto-import the Aside component and attach it to the global scope
-        injectScript(
-          "page-ssr",
-          `import ${SuggestionTagName} from "${location}"; globalThis.${SuggestionTagName} = ${SuggestionTagName};`
-        );
+        if (process.env.NODE_ENV !== "production")
+          injectScript(
+            "page-ssr",
+            `import ${SuggestionTagName} from "${location}"; globalThis.${SuggestionTagName} = ${SuggestionTagName};`
+          );
       },
     },
   };
