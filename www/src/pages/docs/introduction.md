@@ -1,7 +1,7 @@
 ---
 title: Introduction
 description: Docs intro
-layout: "astrosaurus/src/layouts/docs.astro"
+layout: "astrosaurus/layouts/docs.astro"
 sidebar: { position: 1 }
 ---
 
@@ -26,19 +26,3 @@ Astrosaurus could be a perfect fit for a project that searchs a fast documentati
 ### Contribute & Sponsor
 
 Have ideas to improve the tool or the documentation? Please reach out on github.com and sumbit an issue. With your contribution we can make sure this dinosaur does not go extinct.
-
-- FileSystem
-
-The first release: 0.66
-
-- [ ] Tabs & Tab
-- on this page interactive
-- menu
-- theme extending
-- [x] Admonitions as remarkPlugin
-      => filename in code block
-      => option to copy the code
-
-- [ ] one level deep directories a 2
-
-- [ ] All current pages documented

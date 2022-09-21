@@ -1,6 +1,6 @@
 ---
 title: Advanced Markdown
-layout: "astrosaurus/src/layouts/docs.astro"
+layout: "astrosaurus/layouts/docs.astro"
 ---
 
 # Advanced Markdown

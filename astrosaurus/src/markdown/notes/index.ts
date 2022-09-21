@@ -71,7 +71,7 @@ function remarkSuggestions(): unified.Plugin<[], mdast.Root> {
 
 // Astro integration that sets up the remark plugin and auto-imports the `<Suggestion>` component everywhere.
 export function astrosaurusAdvancedMarkdown({
-  location = "astrosaurus/src/markdown/notes/note.astro",
+  location = "astrosaurus/markdown/notes/note.astro",
 } = {}): AstroIntegration {
   return {
     name: "@astrosaurus/advanced-markdown",

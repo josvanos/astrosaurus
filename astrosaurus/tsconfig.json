@@ -1,9 +1,11 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "jsx": "preserve",
     "skipLibCheck": true,
     "outDir": "dist",
+    "noEmit": false,
+    "declaration": true,
     "types": ["astro/client"]
-  }
+  },
+  "include": ["./src/**/*.ts"]
 }
