@@ -7,7 +7,7 @@ import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), astrosaurusAdvancedMarkdown(), mdx({ extendPlugins: "markdown",})],
+  integrations: [tailwind(), astrosaurusAdvancedMarkdown(), mdx({ extendPlugins: "markdown" })],
   legacy: {
     astroFlavoredMarkdown: true,
   },
@@ -23,5 +23,12 @@ export default defineConfig({
       langs: ["bash", "ts"],
     },
   },
-  site: `http://astro.build`,
+  site: `https://astrosaurus.pages.dev`,
+  vite: {
+    build: {
+      rollupOptions: {
+        external: ["astrosaurus"],
+      },
+    },
+  },
 });
