@@ -1,26 +1,33 @@
 {
   "name": "astrosaurus",
   "type": "module",
-  "version": "0.0.3",
-  "main": "./src/index",
+  "version": "0.0.4",
+  "license": "MIT License",
   "scripts": {
-    "prepare": "tsc ",
-    "prepublish": "tailwindcss build -i ./src/tailwind.css -o ./src/astrosaurus.css"
+    "build:tailwind": "tailwindcss build -i ./src/main.css -o ./src/generated/astrosaurus.css ",
+    "prepublish": "yarn run build:tailwind"
   },
   "devDependencies": {
     "@astrojs/tailwind": "^1.0.1",
     "@tailwindcss/typography": "^0.5.7",
-    "astro": "^1.2.3"
+    "astro": "^1.2.3",
+    "typescript-cp": "^0.1.6"
   },
   "peerDependencies": {
     "astro": "^1.2.3"
   },
+  "exports": {
+    ".": "./src/index.ts",
+    "./*": "./src/*"
+  },
   "files": [
-    "./src/*"
+    "src",
+    "index.ts"
   ],
   "dependencies": {
     "hastscript": "^7.0.2",
     "remark-directive": "^2.0.1",
+    "typescript-cp": "^0.1.6",
     "unified": "^10.1.2",
     "unist-util-remove": "^3.1.0",
     "unist-util-visit": "^4.1.1"
