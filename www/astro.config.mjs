@@ -1,13 +1,11 @@
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 
-import { astrosaurusAdvancedMarkdown } from "astrosaurus";
-
 import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), astrosaurusAdvancedMarkdown(), mdx({ extendPlugins: "markdown" })],
+  integrations: [tailwind(), mdx({ extendPlugins: "markdown" })],
   legacy: {
     astroFlavoredMarkdown: true,
   },
