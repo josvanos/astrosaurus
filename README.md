@@ -1,4 +1,4 @@
-> Currently, Astrosaurus is experimental software. Help by taking a look at the [Contribute Page](astrosaurus.pages.dev/contribute) to
+> Currently, Astrosaurus is experimental software. Help by taking a look at the [Contribute Page](https://astrosaurus.pages.dev/docs/contribute) to
 > help this dinosaur to its first release.
 
 # astrosaurus 🦕
