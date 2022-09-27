@@ -2,6 +2,7 @@
 import PageCursor from "../components/actions/PageCursor.astro";
 import BaseLayout from "../components/BaseLayout.astro";
 import Nav from "../components/Nav.astro";
+import LeftSidebar from "../components/Sidebars/LeftSidebar.astro";
 import RightSidebar from "../components/Sidebars/RightSidebar.astro";
 import { getConfig } from "../helpers";
 
@@ -9,9 +10,6 @@ const pages = await Astro.glob("/src/pages/docs/**/*.{md,mdx}");
 pages.sort(sortOnSidebarPosition);
 
 const astrosaurus = await getConfig();
-
-const logo = astrosaurus?.site?.logo;
-const title = astrosaurus?.site?.title;
 
 function sortOnSidebarPosition(page1: any, page2: any) {
   const position1 = page1?.frontmatter?.sidebar?.position || 100;
@@ -24,34 +22,7 @@ const currentPage = Astro.url.pathname;
 
 <BaseLayout>
   <main class="flex">
-    <nav class="w-96 p-8 border-r dark:border-none h-screen dark:bg-slate-900">
-      <div class="flex items-center space-x-4 pb-3">
-        <div
-          class="bg-gray-200 dark:bg-slate-800 w-12 h-12 text-xl flex items-center justify-center rounded-lg"
-        >
-          {logo}
-        </div>
-        <span class="text-lg font-bold dark:text-white">
-          {title}
-        </span>
-      </div>
-
-      <ul>
-        {
-          pages.map((page) => (
-            <a href={page.url}>
-              <li
-                class={`py-2 px-8 hover:bg-gray-200 dark:hover:bg-slate-800 rounded-lg  cursor-pointer ${
-                  page.url == currentPage ? "text-main" : "text-gray-600"
-                }  `}
-              >
-                {page.frontmatter.title}
-              </li>
-            </a>
-          ))
-        }
-      </ul>
-    </nav>
+    <LeftSidebar pages={pages} logo={astrosaurus?.site?.logo} title={astrosaurus?.site?.title} />
     <div class="flex-1 dark:bg-slate-800">
       <Nav />
       <div class="flex">
