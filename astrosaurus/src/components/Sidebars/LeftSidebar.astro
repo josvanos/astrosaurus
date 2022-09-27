@@ -1,0 +1,56 @@
+---
+import MenuIcon from "../../icons/Menu.astro";
+const { pages = [], logo = "", title = "" } = Astro.props;
+
+const currentPage = Astro.url.pathname;
+---
+
+<script is:inline>
+  let isOpen = false;
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const menu = document.getElementById("astrosaurus-menu");
+    const button = document.getElementById("astrosaurus-menu-open");
+
+    button.addEventListener("click", () => {
+      menu.classList.add("fixed");
+      menu.classList.remove("hidden");
+    });
+  });
+</script>
+
+<button id="astrosaurus-menu-open" class="fixed bottom-5 left-5 bg-gray-300 p-2 rounded-full">
+  <MenuIcon />
+</button>
+
+<nav
+  id="astrosaurus-menu"
+  class="hidden sm:block w-96 p-8 border-r dark:border-none h-screen dark:bg-slate-900 z-40 bg-white"
+>
+  <div class="flex items-center space-x-4 pb-3">
+    <div
+      class="bg-gray-200 dark:bg-slate-800 w-12 h-12 text-xl flex items-center justify-center rounded-lg"
+    >
+      {logo}
+    </div>
+    <span class="text-lg font-bold dark:text-white">
+      {title}
+    </span>
+  </div>
+
+  <ul>
+    {
+      pages.map((page: any) => (
+        <a href={page.url}>
+          <li
+            class={`py-2 px-8 hover:bg-gray-200 dark:hover:bg-slate-800 rounded-lg  cursor-pointer ${
+              page.url == false ? "text-main" : "text-gray-600"
+            }  `}
+          >
+            {page.frontmatter.title}
+          </li>
+        </a>
+      ))
+    }
+  </ul>
+</nav>
