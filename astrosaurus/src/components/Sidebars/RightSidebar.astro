@@ -6,25 +6,42 @@ type Props = {
 };
 
 const headings = Astro.props.headings;
-
-let activeHeading = Astro.url.pathname;
-
-//TODO: SIDEBAR INTERACTIVE LIKE VITEPRESS
 ---
+
+<script is:inline>
+  //const ACTIVE_LINK_CLASS = "astrosaurus-link-active";
+  const ACTIVE_LINK_CLASS = "bg-blue-300/0";
+
+  window.addEventListener("DOMContentLoaded", () => {
+    const headings = [...document.querySelectorAll("article > h2,h3,h4")];
+    const links = [...document.querySelectorAll(".astrosaurus-link")];
+
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        const id = entry.target.id;
+        const link = links.find((link) => link.id == `link-${id}`);
+
+        if (entry.intersectionRatio > 0.55) {
+          link?.classList?.add(ACTIVE_LINK_CLASS);
+        } else {
+          link?.classList?.remove(ACTIVE_LINK_CLASS);
+        }
+      }
+    });
+
+    headings.forEach((heading) => observer.observe(heading));
+  });
+</script>
 
 <aside class="h-fit p-8 hidden lg:block">
   <div class="border-l">
     <h2 class="ml-4 mb-2 heading font-bold text-gray-700">On this page</h2>
-    <ul class="ml-4 space-y-2">
+    <ul class="ml-4 space-y-2 astrosaurus-links">
       {
         headings
           ?.filter(({ depth }) => depth > 1 && depth < 4)
           .map((heading) => (
-            <li
-              class={`heading-link depth-${heading.depth} ${
-                activeHeading === heading.slug ? "active" : ""
-              }`.trim()}
-            >
+            <li id={`link-${heading.slug}`} class={`astrosaurus-link depth-${heading.depth}`}>
               <a href={`#${heading.slug}`}>{heading.text}</a>
             </li>
           ))
@@ -32,3 +49,8 @@ let activeHeading = Astro.url.pathname;
     </ul>
   </div>
 </aside>
+<style>
+  .astrosaurus-link-active {
+    @apply bg-red-500;
+  }
+</style>
