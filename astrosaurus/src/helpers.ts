@@ -1,12 +1,7 @@
-// @ts-nocheck
 export async function getConfig() {
-  try {
-    return globalThis.astrosaurus;
-  } catch (error) {
-    warn("importing astrosaurus config failed");
+  if (!globalThis.astrosaurus) {
+    console.error("[🦕] Astrosaurus Config has not been initialized correctly");
   }
-}
 
-export function warn(message: string) {
-  return console.log(`[🦕] \x1b[36m${message}  \x1b[0m`);
+  return globalThis.astrosaurus;
 }

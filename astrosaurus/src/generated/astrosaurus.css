@@ -1426,6 +1426,10 @@ video {
   left: 0px;
 }
 
+.right-20 {
+  right: 5rem;
+}
+
 .z-0 {
   z-index: 0;
 }
@@ -1538,8 +1542,8 @@ video {
   width: 4rem;
 }
 
-.w-96 {
-  width: 24rem;
+.w-80 {
+  width: 20rem;
 }
 
 .w-12 {
@@ -1679,8 +1683,9 @@ video {
   background-color: rgb(229 231 235 / var(--tw-bg-opacity));
 }
 
-.bg-blue-300\/0 {
-  background-color: rgb(147 197 253 / 0);
+.bg-blue-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(147 197 253 / var(--tw-bg-opacity));
 }
 
 .bg-sky-500 {

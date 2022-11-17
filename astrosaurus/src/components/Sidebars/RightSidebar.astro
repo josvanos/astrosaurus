@@ -10,7 +10,7 @@ const headings = Astro.props.headings;
 
 <script is:inline>
   //const ACTIVE_LINK_CLASS = "astrosaurus-link-active";
-  const ACTIVE_LINK_CLASS = "bg-blue-300/0";
+  const ACTIVE_LINK_CLASS = "bg-blue-300";
 
   window.addEventListener("DOMContentLoaded", () => {
     const headings = [...document.querySelectorAll("article > h2,h3,h4")];
@@ -23,6 +23,7 @@ const headings = Astro.props.headings;
 
         if (entry.intersectionRatio > 0.55) {
           link?.classList?.add(ACTIVE_LINK_CLASS);
+          console.log(link);
         } else {
           link?.classList?.remove(ACTIVE_LINK_CLASS);
         }
@@ -33,7 +34,7 @@ const headings = Astro.props.headings;
   });
 </script>
 
-<aside class="h-fit p-8 hidden lg:block">
+<aside class="h-fit p-8 hidden lg:block right-20 fixed">
   <div class="border-l">
     <h2 class="ml-4 mb-2 heading font-bold text-gray-700">On this page</h2>
     <ul class="ml-4 space-y-2 astrosaurus-links">
