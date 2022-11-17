@@ -1,10 +1,7 @@
 // @ts-nocheck
 export async function getConfig() {
   try {
-    const home = process.cwd();
-    /* @vite-ignore */
-    const config = await import(`${home}/config`);
-    return config.astrosaurus;
+    return globalThis.astrosaurus;
   } catch (error) {
     warn("importing astrosaurus config failed");
   }

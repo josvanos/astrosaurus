@@ -2,7 +2,12 @@ import type { AstroComponent } from "astro/dist/runtime/server/render/astro";
 
 export { astrosaurusAdvancedMarkdown } from "./markdown/notes";
 
+declare global {
+  const astrosaurus: Config;
+}
+
 export const defineConfig = (config: Config) => {
+  globalThis.astrosaurus = config;
   return config;
 };
 

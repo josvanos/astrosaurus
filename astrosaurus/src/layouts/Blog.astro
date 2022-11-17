@@ -1,0 +1,47 @@
+---
+import BaseLayout from "../components/BaseLayout.astro";
+
+const { content: post, headings } = Astro.props;
+
+const author = {
+  name: "Mathew",
+  picture: "",
+};
+---
+
+<BaseLayout>
+  <main class="px-8 py-5 lg:py-8 mx-auto xl:px-5 max-w-screen-lg">
+    <a href="/blog" class="flex text-gray-500">← view all posts</a>
+    <section class="flex items-center justify-between pt-1 pb-4">
+      <div class="left">
+        <h1
+          class="mt-2 mb-3 text-3xl font-semibold tracking-tight lg:leading-snug text-[#262626] lg:text-4xl dark:text-white"
+        >
+          {post.title}
+        </h1>
+
+        <p class="text-md leading-4 font-medium text-gray-500 pb-4">
+          Published at {new Date(post.published_at).toLocaleDateString()} by
+          {author.name || "A member of Wooperations"}
+        </p>
+      </div>
+
+      <div class="flex-shrink-0 hidden ml-3 sm:block">
+        <img class="object-cover w-16 h-16 rounded-lg shadow-sm" src={author.picture} alt="" />
+      </div>
+    </section>
+
+    <div class="relative z-0 mx-auto overflow-hidden lg:rounded-lg aspect-video" v-if="post.image">
+      <span class="container"> <img src={post.image} decoding="async" class="img" /></span>
+    </div>
+
+    <div class="max-w-screen-lg py-3">
+      <div class="mx-auto my-3 prose prose-base dark !prose-h2:no-underline">
+        <slot />
+      </div>
+    </div>
+    <!-- <AuthorCard author={author}>
+      {author.description}
+    </AuthorCard> -->
+  </main>
+</BaseLayout>

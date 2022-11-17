@@ -1,4 +1,5 @@
 import { defineConfig } from "astro/config";
+import astrosaurus from "./config";
 import tailwind from "@astrojs/tailwind";
 
 import mdx from "@astrojs/mdx";
