@@ -1,5 +1,5 @@
 ---
-layout: "astrosaurus/layouts/Blog.astro"
+layout: "astrosaurus/layouts/docs.astro"
 title: Ho
 published_at: 08-15-2022
 image: https://www.hyperui.dev/photos/team-1.jpeg
