@@ -1,5 +1,9 @@
 # Astrosaurus: Documentation & Blog site
 
+Create a documentation website in no time with the power of astro and astrosaurus!
+
+## Installation
+
 ```bash
 yarn add astrosaurus
 ```
