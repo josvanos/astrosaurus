@@ -1,8 +1,25 @@
 {
   "name": "astrosaurus",
+  "description": "Documentation & Blogging Websites Tool With The Power of Astro",
   "type": "module",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "license": "MIT License",
+  "keywords": [
+    "astro",
+    "static site generator",
+    "documentation",
+    "websites",
+    "open source",
+    "astrosaurus"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/josvanos/astrosaurus.git",
+    "directory": "astrosaurus"
+  },
+  "bugs": {
+    "url": "https://github.com/josvanos/astrosaurus/issues"
+  },
   "main": "./src/index.ts",
   "scripts": {
     "build:tailwind": "tailwindcss build -i ./src/main.css -o ./src/generated/astrosaurus.css ",
