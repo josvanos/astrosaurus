@@ -20,8 +20,11 @@ const [prevPage, nextPage] = createPageCursor(currentPage);
 <section class="grid grid-cols-2 gap-4">
   {
     prevPage ? (
-      <a class="border border-gray-300 py-2 px-4 rounded-lg" href={prevPage.url}>
-        <div>Previous</div>
+      <a
+        class="border border-gray-300 hover:border-main transition-all duration-200 py-2 px-4 rounded-lg"
+        href={prevPage.url}
+      >
+        <div class="text-main">Previous</div>
         {prevPage.frontmatter.title}
       </a>
     ) : (
@@ -31,8 +34,11 @@ const [prevPage, nextPage] = createPageCursor(currentPage);
 
   {
     nextPage && (
-      <a class="border border-gray-300 py-2 px-4 text-right rounded-lg" href={nextPage.url}>
-        <div>Next</div>
+      <a
+        class="border border-gray-300 py-2 px-4 text-right hover:border-main rounded-lg transition-all duration-200"
+        href={nextPage.url}
+      >
+        <div class="text-main">Next</div>
         {nextPage.frontmatter.title}
       </a>
     )

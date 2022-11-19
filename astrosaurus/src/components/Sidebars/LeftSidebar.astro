@@ -1,8 +1,41 @@
 ---
 import MenuIcon from "../../icons/Menu.astro";
+//@ts-ignore
+import SidebarItem from "./SidebarItem.astro";
+
 const { pages = [], logo = "", title = "" } = Astro.props;
 
-const currentPage = Astro.url.pathname;
+const baseUrl = "/docs/";
+
+const sidebarSet = pages.reduce((acc: Record<string, SideItem>, page: any) => {
+  const url = page.url.replace(baseUrl, "") as string;
+
+  const item = {
+    title: page.frontmatter.title,
+    url: page.url,
+  };
+
+  if (!url.includes("/")) return { ...acc, [url]: item };
+
+  const [left, right] = url.split("/", 2);
+  const current = acc?.[left]?.items || [];
+
+  return {
+    ...acc,
+    [left]: {
+      title: left,
+      items: [...current, item],
+    },
+  };
+}, {});
+
+const sidebar = Object.values(sidebarSet);
+
+type SideItem = {
+  title: string;
+  url?: string;
+  items?: SideItem[];
+};
 ---
 
 <script is:inline>
@@ -40,17 +73,19 @@ const currentPage = Astro.url.pathname;
 
   <ul>
     {
-      pages.map((page: any) => (
-        <a href={page.url}>
-          <li
-            class={`py-2 px-8 hover:bg-gray-200 dark:hover:bg-slate-800 rounded-lg  cursor-pointer ${
-              page.url == false ? "text-main" : "text-gray-600"
-            }  `}
-          >
-            {page.frontmatter.title}
-          </li>
-        </a>
-      ))
+      sidebar.map((page: any) => {
+        if (page.items) {
+          return (
+            <div>
+              <h5 class="my-4 font-semibold text-slate-900 dark:text-slate-200 "> {page.title} </h5>
+              {page?.items?.map((page) => (
+                <SidebarItem url={page.url} title={page.title} />
+              ))}
+            </div>
+          );
+        }
+        return <SidebarItem url={page.url} title={page.title} />;
+      })
     }
   </ul>
 </nav>

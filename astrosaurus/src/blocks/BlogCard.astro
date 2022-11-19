@@ -1,12 +1,19 @@
 ---
-const { post = {}, author = {}, url } = Astro.props;
+type Props = {
+  post: {
+    title: string;
+    description: string;
+    published_at: any;
+    reading_time: any;
+  };
+  author: Author;
+  url: string;
+};
+
+const { post, author, url } = Astro.props;
 ---
 
-<a
-  href={url}
-  class="relative block p-8 overflow-hidden border border-gray-100 rounded-lg group"
-  href=""
->
+<a href={url} class="relative block p-8 overflow-hidden border border-gray-100 rounded-lg group">
   <span
     class="w-0 group-hover:w-full absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r duration-200 from-green-300 via-blue-500 to-purple-600"
   ></span>
@@ -14,7 +21,7 @@ const { post = {}, author = {}, url } = Astro.props;
   <div class="justify-between sm:flex">
     <div>
       <h5 class="text-xl font-bold text-gray-900">
-        {post.title}
+        {post?.title}
       </h5>
       <p class="mt-1 text-xs font-medium text-gray-600">By {author.name}</p>
     </div>
@@ -26,7 +33,7 @@ const { post = {}, author = {}, url } = Astro.props;
 
   <div class="mt-4 sm:pr-8">
     <p class="text-sm text-gray-500">
-      {post.description}
+      {post?.description}
     </p>
   </div>
 

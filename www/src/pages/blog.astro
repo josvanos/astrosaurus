@@ -1,5 +1,8 @@
 ---
+//@ts-ignore
+import Page from "astrosaurus/layouts/Page.astro";
 import BlogCard from "../../components/BlogCard.astro";
+import { mathew } from "../../config";
 
 // Use Astro.glob() to fetch all posts, and then sort them by date.
 const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
@@ -7,33 +10,26 @@ const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
 );
 ---
 
-<main class="p-10">
-  <div class="lg:text-center">
-    <h2 class="text-lg text-main-purple font-semibold">Blog</h2>
-    <p
-      class="mt-2 text-3xl leading-8 font-bold tracking-tight text-gray-900 sm:text-4xl sm:tracking-tight"
-    >
-      Read our latest blog posts
-    </p>
-    <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
-      On our blog you can read more about the Wooperations platform and bringing your webshop and
-      business to the next level.
-    </p>
-  </div>
+<Page>
+  <main class="p-10 max-w-7xl mx-auto">
+    <div class="lg:text-center">
+      <h2 class="text-lg text-main font-semibold">Blog</h2>
+      <p
+        class="mt-2 text-3xl leading-8 font-bold tracking-tight text-gray-900 sm:text-4xl sm:tracking-tight"
+      >
+        Read our latest blog posts
+      </p>
+      <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+        On our blog you can read more about the Astrosaurus development and future adventures.
+      </p>
+    </div>
 
-  <section
-    class="grid grid-cols-1 gap-8 mt-8 md:gap-12 md:mt-16 md:grid-cols-2 lg:grid-cols-3 mx-8"
-  >
-    {
-      posts.map((post) => {
-        return (
-          <BlogCard
-            url={post.url}
-            author={{ name: "Mathew from Astrosaurus" }}
-            post={post.frontmatter}
-          />
-        );
-      })
-    }
-  </section>
-</main>
+    <section class="grid grid-cols-1 gap-8 mt-8 md:gap-12 md:mt-16 md:grid-cols-2 mx-8">
+      {
+        posts.map((post) => {
+          return <BlogCard url={post.url} author={mathew} post={post.frontmatter} />;
+        })
+      }
+    </section>
+  </main>
+</Page>

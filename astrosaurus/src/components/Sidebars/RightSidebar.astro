@@ -10,23 +10,27 @@ const headings = Astro.props.headings;
 
 <script is:inline>
   //const ACTIVE_LINK_CLASS = "astrosaurus-link-active";
-  const ACTIVE_LINK_CLASS = "bg-blue-300";
+  const ACTIVE_LINK_CLASS = "text-main";
 
   window.addEventListener("DOMContentLoaded", () => {
     const headings = [...document.querySelectorAll("article > h2,h3,h4")];
     const links = [...document.querySelectorAll(".astrosaurus-link")];
+
+    const active_link = null;
+    function setActiveLink(link) {
+      links.forEach((link) => {
+        link?.classList?.remove(ACTIVE_LINK_CLASS);
+      });
+
+      link?.classList?.add(ACTIVE_LINK_CLASS);
+    }
 
     const observer = new IntersectionObserver((entries) => {
       for (const entry of entries) {
         const id = entry.target.id;
         const link = links.find((link) => link.id == `link-${id}`);
 
-        if (entry.intersectionRatio > 0.55) {
-          link?.classList?.add(ACTIVE_LINK_CLASS);
-          console.log(link);
-        } else {
-          link?.classList?.remove(ACTIVE_LINK_CLASS);
-        }
+        if (entry.isIntersecting) setActiveLink(link);
       }
     });
 

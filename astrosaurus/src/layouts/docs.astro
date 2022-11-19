@@ -1,7 +1,7 @@
 ---
 import PageCursor from "../components/actions/PageCursor.astro";
 import BaseLayout from "../components/BaseLayout.astro";
-import Nav from "../components/Nav.astro";
+import Menu from "../components/Menu/Menu.astro";
 import LeftSidebar from "../components/Sidebars/LeftSidebar.astro";
 import RightSidebar from "../components/Sidebars/RightSidebar.astro";
 import { getConfig } from "../helpers";
@@ -9,7 +9,7 @@ import { getConfig } from "../helpers";
 const pages = await Astro.glob("/src/pages/docs/**/*.{md,mdx}");
 pages.sort(sortOnSidebarPosition);
 
-const astrosaurus = await getConfig();
+const astrosaurus = getConfig();
 
 function sortOnSidebarPosition(page1: any, page2: any) {
   const position1 = page1?.frontmatter?.sidebar?.position || 100;
@@ -23,20 +23,21 @@ const currentPage = Astro.url.pathname;
 <BaseLayout>
   <main class="flex">
     <LeftSidebar pages={pages} logo={astrosaurus?.site?.logo} title={astrosaurus?.site?.title} />
-    <div class="flex-1 dark:bg-slate-800 ml-96">
-      <Nav />
+    <div class="flex-1 dark:bg-slate-800 ml-80">
+      <Menu layout="links socials" class="!shadow-none fixed w-[calc(100vw-20rem)]" />
       <div class="flex">
-        <section class="px-16">
-          <div class="max-w-screen-lg max-h-screen py-3">
+        <section class="px-16 pt-6 pb-24">
+          <div class="max-w-screen-lg pb-8">
             <article
               id="article"
-              class="overflow-x-auto max-h-[100vh - 16rem] lg:min-w-[74ch] mx-auto my-3 prose prose-base dark:prose-invert prose-pre:text-[1rem] !prose-h2:no-underline prose-code:bg-primary/50"
+              class="overflow-x-auto lg:min-w-[74ch] mx-auto my-3 prose prose-base dark:prose-invert prose-pre:text-[1rem] !prose-h2:no-underline prose-code:bg-primary/50"
             >
               <slot />
             </article>
           </div>
           <PageCursor pages={pages} currentPage={currentPage} />
         </section>
+
         <RightSidebar headings={Astro.props.headings || Astro?.props?.content?.astro?.headings} />
       </div>
     </div>

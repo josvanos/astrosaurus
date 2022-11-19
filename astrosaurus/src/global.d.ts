@@ -10,6 +10,9 @@ type Config = {
     editUrl?: string;
     inviteUrl?: string;
   };
+  menu: {
+    [key: string]: string | MenuItem;
+  };
 
   theme?: {
     colors?: {
@@ -24,4 +27,15 @@ type Config = {
   };
 
   socials?: {};
+};
+
+type MenuItem = {
+  title: string;
+  to: string;
+};
+
+type Author = {
+  key: string;
+  name: string;
+  picture: string;
 };
