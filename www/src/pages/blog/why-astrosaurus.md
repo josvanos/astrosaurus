@@ -1,9 +1,10 @@
 ---
+layout: "astrosaurus/layouts/blog.astro"
 title: Why did we create Astrosaurus?
 published_at: 08-15-2022
-image: https://www.hyperui.dev/photos/team-1.jpeg
+image: /astrohero.png
 tags: about
-author: Mathew Morale
+author: mathew
 ---
 
 ## Our vision
