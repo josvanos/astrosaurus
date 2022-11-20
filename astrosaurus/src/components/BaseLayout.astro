@@ -2,10 +2,9 @@
 import { getConfig } from "../helpers";
 import BaseHead from "./BaseHead.astro";
 
-const config = await getConfig();
+import "../generated/astrosaurus.css";
+const config = getConfig();
 const Head = config?.theme?.extend?.head;
-
-import("../generated/astrosaurus.css").catch();
 ---
 
 <html>

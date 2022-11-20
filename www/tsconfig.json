@@ -2,7 +2,13 @@
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
     "jsx": "preserve",
+    "esModuleInterop": true,
     "skipLibCheck": true,
+    "lib": ["es2020"],
+    "module": "ES2022",
+    "moduleResolution": "node",
+    "target": "es2022",
+
     "types": ["astro/client"]
   }
 }
