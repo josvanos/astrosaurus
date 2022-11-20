@@ -2,7 +2,7 @@
   "name": "astrosaurus",
   "description": "Documentation & Blogging Websites Tool With The Power of Astro",
   "type": "module",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT License",
   "keywords": [
     "astro",
