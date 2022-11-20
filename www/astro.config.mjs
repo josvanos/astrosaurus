@@ -19,10 +19,10 @@ export default defineConfig({
   },
   site: `https://astrosaurus.pages.dev`,
   vite: {
-    // build: {
-    //   rollupOptions: {
-    //     external: ["astrosaurus"],
-    //   },
-    // },
+    build: {
+      rollupOptions: {
+        external: ["astrosaurus"],
+      },
+    },
   },
 });
