@@ -1,5 +1,4 @@
 ---
-import { mathew } from "../../config";
 //@ts-ignore
 import Page from "astrosaurus/page";
 import BlogCard from "../../components/BlogCard.astro";
@@ -28,7 +27,7 @@ const posts = await Astro.glob("./blog/*.{md,mdx}").then((posts) => posts.sort(s
     <section class="grid grid-cols-1 gap-8 mt-8 md:gap-12 md:mt-16 md:grid-cols-2 mx-8">
       {
         posts.map((post) => {
-          return <BlogCard url={post.url} author={mathew} post={post.frontmatter} />;
+          return <BlogCard url={post.url} author={{ name: "Mathew" }} post={post.frontmatter} />;
         })
       }
     </section>
