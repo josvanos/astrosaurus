@@ -24,9 +24,9 @@ const currentPage = Astro.url.pathname;
   <main class="flex">
     <LeftSidebar pages={pages} logo={astrosaurus?.site?.logo} title={astrosaurus?.site?.title} />
     <div class="flex-1 dark:bg-slate-800 ml-80">
-      <Menu layout="links socials" class="!shadow-none fixed w-[calc(100vw-20rem)]" />
+      <Menu layout="links socials" class="!shadow-none fixed w-[calc(100vw-20rem)] bg-white" />
       <div class="flex">
-        <section class="px-16 pt-6 pb-24">
+        <section class="px-16 mt-8 pt-8 pb-24">
           <div class="max-w-screen-lg pb-8">
             <article
               id="article"

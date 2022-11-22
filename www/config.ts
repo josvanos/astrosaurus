@@ -9,7 +9,7 @@ export const astrosaurus = defineConfig({
     inviteUrl: "https://github.com/withastro/astro",
   },
   socials: {
-    github: "<YOUR GITHUB LINK>",
+    github: "https://github.com/josvanos/astrosaurus",
     discord: "<YOUR DISCORD LINK>",
     twitter: "<YOUR TWITTER LINK>",
   },
